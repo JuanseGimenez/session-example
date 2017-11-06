@@ -1,6 +1,10 @@
-<h1>Editing Chat Room</h1>
+<%= render partial: "static_pages/navbar" %>
+<div class="container" style="padding-top: 50px;">
+	<h1>Editing Chat Room</h1>
+	<div class="col-lg-4">
+		<%= render 'form', chat_room: @chat_room %>
+		<%= link_to 'Show', @chat_room %>
+		<%= link_to 'Back', chat_rooms_path %>
+	</div>
 
-<%= render 'form', chat_room: @chat_room %>
-
-<%= link_to 'Show', @chat_room %> |
-<%= link_to 'Back', chat_rooms_path %>
+</div>

@@ -1,18 +1,21 @@
-<p id="notice"><%= notice %></p>
+<%= render partial: "static_pages/navbar" %>
+<div class="container" style="padding-top: 50px;">
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @chat_room.title %>
-</p>
+	<p>
+		<strong>Title:</strong>
+		<%= @chat_room.title %>
+	</p>
 
-<p>
-  <strong>Room created for:</strong>
-  <%= @chat_room.user.email %>
-</p>
+	<p>
+		<strong>Room created for:</strong>
+		<%= @chat_room.user.email %>
+	</p>
 
-<p>
-	Message here
-</p>
+	<p>
+		Message here
+	</p>
 
-<%= link_to 'Edit', edit_chat_room_path(@chat_room) %> |
-<%= link_to 'Back', chat_rooms_path %>
+	<%= link_to 'Edit', edit_chat_room_path(@chat_room) %> |
+	<%= link_to 'Back', chat_rooms_path %>
+</div>

@@ -1,18 +1,20 @@
-<p id="notice"><%= notice %></p>
+<%= render partial: "static_pages/navbar" %>
+<div class="container" style="padding-top: 50px;">
+  <p id="notice"><%= notice %></p>
 
-<h1>Chat Rooms</h1>
+  <h1>Chat Rooms</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>User</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <% @chat_rooms.each do |chat_room| %>
+    <tbody>
+      <% @chat_rooms.each do |chat_room| %>
       <tr>
         <td><%= chat_room.title %></td>
         <td><%= chat_room.user.email %></td>
@@ -20,10 +22,11 @@
         <td><%= link_to 'Edit', edit_chat_room_path(chat_room) %></td>
         <td><%= link_to 'Destroy', chat_room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% end %>
+    </tbody>
+  </table>
 
-<br>
+  <br>
 
-<%= link_to 'New Chat Room', new_chat_room_path %>
+  <%= link_to 'New Chat Room', new_chat_room_path %>
+</div>
