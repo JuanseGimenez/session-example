@@ -5,5 +5,5 @@ development:
   database: chat-with-password_development
   pool: 5
   username: root
-  password: q1w2e3r4t5
+  password: 
   host: localhost
