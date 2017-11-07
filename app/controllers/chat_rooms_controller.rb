@@ -1,5 +1,5 @@
 class ChatRoomsController < ApplicationController
-  before_action :set_chat_room, only: [:show, :edit, :update, :destroy]
+  before_action :set_chat_room, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
 
   # GET /chat_rooms
@@ -11,6 +11,12 @@ class ChatRoomsController < ApplicationController
   # GET /chat_rooms/1
   # GET /chat_rooms/1.json
   def show
+    chat_room = ChatRoom.find(params[:id])
+    if session[:chat_room] == chat_room.id
+      @chat_room = chat_room
+    else
+      redirect_to login_chat_path(chat_room: params[:id])
+    end
   end
 
   # GET /chat_rooms/new
@@ -26,7 +32,6 @@ class ChatRoomsController < ApplicationController
   # POST /chat_rooms.json
   def create
     @chat_room = current_user.chat_rooms.new(chat_room_params)
-
     respond_to do |format|
       if @chat_room.save
         format.html { redirect_to @chat_room, notice: 'Chat room was successfully created.' }
@@ -70,6 +75,6 @@ class ChatRoomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def chat_room_params
-      params.require(:chat_room).permit(:title)
+      params.require(:chat_room).permit(:title, :password, :password_confirmation)
     end
 end
